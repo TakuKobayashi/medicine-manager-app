@@ -1,4 +1,4 @@
-# okusuri-techou (お薬手帳アプリ) モノレポ
+# medicine-manager-app(お薬手帳アプリ) モノレポ
 
 ```
 okusuri-techou/
