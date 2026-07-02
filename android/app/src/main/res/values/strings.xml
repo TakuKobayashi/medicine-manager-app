@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">お薬手帳</string>
+    <string name="widget_check_description">今日飲む薬をチェックできます</string>
+    <string name="widget_list_description">登録されている薬の一覧を表示します</string>
+</resources>

@@ -1,0 +1,67 @@
+name: OkusuriTechou
+options:
+  bundleIdPrefix: com.phantomcatworks
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+
+packages:
+  GRDB:
+    url: https://github.com/groue/GRDB.swift.git
+    from: 6.29.0
+  MessagePack:
+    url: https://github.com/a2/MessagePack.swift.git
+    from: 4.0.0
+
+targets:
+  OkusuriTechou:
+    type: application
+    platform: iOS
+    sources:
+      - path: OkusuriTechou
+        excludes:
+          - "Resources/Info.plist"
+          - "Resources/OkusuriTechou.entitlements"
+    resources: []
+    dependencies:
+      - package: GRDB
+        product: GRDB
+      - package: MessagePack
+        product: MessagePack
+      - target: OkusuriTechouWidget
+        embed: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.phantomcatworks.okusuritechou
+        INFOPLIST_FILE: OkusuriTechou/Resources/Info.plist
+        DEVELOPMENT_TEAM: ""
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: 5.0
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: OkusuriTechou/Resources/OkusuriTechou.entitlements
+
+  OkusuriTechouWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      # ウィジェット本体
+      - path: OkusuriTechouWidget
+        excludes:
+          - "Info.plist"
+          - "OkusuriTechouWidget.entitlements"
+      # アプリ本体とDB(ActiveRecordパターンのモデル層)を共有する
+      - path: OkusuriTechou/Data
+    dependencies:
+      - package: GRDB
+        product: GRDB
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.phantomcatworks.okusuritechou.widget
+        INFOPLIST_FILE: OkusuriTechouWidget/Info.plist
+        DEVELOPMENT_TEAM: ""
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: 5.0
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: OkusuriTechouWidget/OkusuriTechouWidget.entitlements
