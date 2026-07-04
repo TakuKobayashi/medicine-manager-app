@@ -1,8 +1,16 @@
 name: medicine-manager-app
 slug: medicine-manager-app
-description:
-description_ja: お薬手帳アプリ
+description: Monorepo for a medicine management app with Android and iOS implementations, currently featuring database schema and a basic checklist screen.
+description_ja: AndroidとiOSの両方の実装を持つ薬管理アプリのモノレポで、現在データベーススキーマと基本的なチェックリスト画面が実装されています。
 translation_locked: false
 status: incubating
-repo: null
-tags: null
+repo: git@github.com:TakuKobayashi/medicine-manager-app.git
+tags:
+  - medicine
+  - health
+  - android
+  - ios
+  - swift
+  - kotlin
+  - sqlite
+  - monorepo
